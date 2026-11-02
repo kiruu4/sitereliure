@@ -72,7 +72,7 @@ On les retrouve en cherchant dans `outils/generer-pages.py` le texte entre croch
 ## Couleurs et polices
 
 Les couleurs se règlent au début de `css/style.css` (`--paper`, `--leather`, `--gold`, etc.).
-Les polices *Cormorant Garamond* (titres) et *EB Garamond* (texte) sont **hébergées sur le site**, dans le dossier `fonts/`. Le site ne fait donc aucun appel à Google : c’est plus rapide et plus respectueux des visiteurs (RGPD). Ces polices sont libres (licence SIL OFL), et leurs licences sont jointes dans `fonts/`.
+Les polices *Playfair Display* (titres) et *Lora* (texte et menus) sont **hébergées sur le site**, dans le dossier `fonts/`. Le site ne fait donc aucun appel à Google : c’est plus rapide et plus respectueux des visiteurs (RGPD). Ces polices sont libres (licence SIL OFL), et leurs licences sont jointes dans `fonts/`.
 
 ## Tester sur son ordinateur
 

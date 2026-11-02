@@ -9,6 +9,7 @@ Toute modification faite à la main dans ces fichiers est perdue :
 modifiez plutôt ce script, puis relancez-le.
 """
 import json
+import re
 from pathlib import Path
 
 # Racine du dépôt (le dossier parent de « outils »)
@@ -87,8 +88,8 @@ def page(filename, title, description, body, current=None, extra_head=""):
   <meta property="og:description" content="{description}">
   <meta property="og:locale" content="fr_FR">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="fonts/eb-garamond.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/lora.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js');</script>
   <script src="js/main.js" defer></script>{extra_head}
@@ -151,6 +152,9 @@ def page(filename, title, description, body, current=None, extra_head=""):
 </body>
 </html>
 """
+    # Typographie française : espace insécable avant : ; ! ? » et après «
+    html = re.sub(r" ([:;!?»])", "\u00a0\\1", html)
+    html = html.replace("« ", "«\u00a0")
     (OUT / filename).write_text(html, encoding="utf-8")
 
 
@@ -525,7 +529,7 @@ page("mentions-legales.html", "Mentions légales",
         (OpenStreetMap), qui peut recevoir votre adresse IP lors de son affichage.</p>
 
         <h2>Crédits</h2>
-        <p>Polices : <em>Cormorant Garamond</em> (Christian Thalmann) et <em>EB Garamond</em> (Georg Duffner, Octavio Pardo),
+        <p>Polices : <em>Playfair Display</em> (Claus Eggers Sørensen) et <em>Lora</em> (Cyreal),
         sous licence SIL Open Font License 1.1. Carte : © les contributeurs d’OpenStreetMap.</p>
       </div>
     </section>""")
