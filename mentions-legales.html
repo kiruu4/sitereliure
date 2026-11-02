@@ -12,9 +12,8 @@
   <meta property="og:description" content="Mentions légales du site Au Fil de la Reliure.">
   <meta property="og:locale" content="fr_FR">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
+  <link rel="preload" href="fonts/eb-garamond.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js');</script>
   <script src="js/main.js" defer></script>
@@ -81,8 +80,12 @@
 
         <h2>Données personnelles et cookies</h2>
         <p>Ce site ne comporte aucun formulaire, ne collecte aucune donnée personnelle et ne dépose aucun cookie de mesure d’audience.</p>
-        <p>Pour l’affichage, il fait appel à des services tiers : les polices de caractères (Google Fonts) et la carte de la page Contact (OpenStreetMap).
-        Ces services peuvent recevoir votre adresse IP lors du chargement des pages.</p>
+        <p>Les polices de caractères sont hébergées sur le site lui-même. Seule la carte de la page Contact fait appel à un service tiers
+        (OpenStreetMap), qui peut recevoir votre adresse IP lors de son affichage.</p>
+
+        <h2>Crédits</h2>
+        <p>Polices : <em>Cormorant Garamond</em> (Christian Thalmann) et <em>EB Garamond</em> (Georg Duffner, Octavio Pardo),
+        sous licence SIL Open Font License 1.1. Carte : © les contributeurs d’OpenStreetMap.</p>
       </div>
     </section>
   </main>

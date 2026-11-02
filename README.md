@@ -19,6 +19,8 @@ Le site est fait en HTML et CSS simples, sans framework ni étape de compilation
 | `css/style.css` | Toute la mise en forme (couleurs en haut du fichier) |
 | `js/main.js` | Menu mobile, filtres de la galerie, agrandissement des photos |
 | `images/` | Icône, photos de l’atelier et des réalisations |
+| `fonts/` | Polices du site et leurs licences (SIL OFL) |
+| `outils/generer-pages.py` | Script qui fabrique toutes les pages `.html` (voir plus bas) |
 
 ## Mettre le site en ligne (GitHub Pages)
 
@@ -26,42 +28,51 @@ Le site est fait en HTML et CSS simples, sans framework ni étape de compilation
 2. Dans *Source*, choisir **Deploy from a branch**, puis la branche **main** et le dossier **/ (root)**.
 3. Après une ou deux minutes, le site est visible à l’adresse indiquée, par exemple `https://<compte>.github.io/sitereliure/`.
 
+## Modifier les textes : le générateur de pages
+
+Toutes les pages `.html` sont fabriquées par le script **`outils/generer-pages.py`**.
+L’en-tête, le menu et le pied de page n’y sont écrits qu’une fois, puis recopiés sur chaque page.
+
+1. Modifier le texte dans `outils/generer-pages.py`. Les coordonnées (téléphone, adresse, e-mail) sont regroupées tout en haut du fichier.
+2. Depuis le dossier du site, lancer :
+
+   ```bash
+   python3 outils/generer-pages.py
+   ```
+
+   Le script n’a besoin que de Python 3, sans aucune installation.
+3. Vérifier le résultat dans le navigateur, puis publier les fichiers modifiés.
+
+> ⚠️ Le script **réécrit** les fichiers `.html`. Une modification faite directement dans un fichier `.html` sera perdue au prochain lancement. Il faut donc toujours modifier le script, pas les pages.
+
 ## Informations restant à compléter
 
-On les retrouve en cherchant dans les fichiers le texte entre crochets `[...]`.
+On les retrouve en cherchant dans `outils/generer-pages.py` le texte entre crochets `[...]`.
 
-- **E-mail** : remplacer `<span class="placeholder">[email à venir]</span>` par
-  `<a href="mailto:adresse@exemple.fr?subject=Demande%20de%20devis">adresse@exemple.fr</a>`.
-  Il apparaît dans toutes les pages (pied de page), ainsi que dans `contact.html` et `mentions-legales.html`.
-- **Horaires** : dans `contact.html`, bloc « Horaires ».
-- **Parcours de François** : dans `atelier.html`, paragraphe `[Texte à compléter : …]`.
+- **E-mail** : en haut du script, remplacer `EMAIL = "[email à venir]"` par la vraie adresse, puis mettre `EMAIL_READY = True`. L’adresse apparaîtra alors partout : pied de page, Contact et Mentions légales. Elle sera cliquable, avec l’objet « Demande de devis ».
+- **Horaires** : section « Contact », bloc « Horaires ».
+- **Parcours de François** : section « Atelier », paragraphe `[Texte à compléter : …]`.
 - **Photos** : voir ci-dessous.
-
-> L’en-tête et le pied de page sont recopiés dans chaque page. Une modification de ces parties est donc à faire dans **chaque fichier `.html`**.
 
 ## Ajouter ou remplacer des photos
 
 1. Déposer les photos dans `images/realisations/`, de préférence en **JPEG**, d’environ 1600 px de large et de moins de 400 Ko.
-2. Dans `realisations.html`, chaque photo correspond à un bloc de ce type :
+2. Dans `outils/generer-pages.py`, la liste `GALLERY` contient une ligne par photo :
 
-   ```html
-   <li class="gallery-item" data-category="reliure">
-     <a href="images/realisations/ma-photo.jpg" data-lightbox data-caption="Description de la photo">
-       <img src="images/realisations/ma-photo.jpg" alt="Description de la photo" width="800" height="600" loading="lazy">
-     </a>
-     <p class="gallery-caption"><span class="tag">Reliure</span> Description de la photo</p>
-   </li>
+   ```python
+   ("ma-photo.jpg", "reliure", "Reliure d’art", "Description de la photo"),
    ```
 
-   - `data-category` vaut `reliure`, `dorure` ou `restauration` : c’est ce qui fait fonctionner les filtres.
-   - Copier un bloc pour ajouter une photo, en supprimer un pour la retirer.
-3. Les 3 premières photos sont aussi présentées sur l’accueil (`index.html`, section « Quelques réalisations »).
-4. La photo de l’atelier se remplace en modifiant `images/atelier.svg` dans `atelier.html`.
+   - Les quatre éléments sont, dans l’ordre : le nom du fichier, la catégorie (`reliure`, `dorure` ou `restauration`, qui fait fonctionner les filtres), un titre et la légende.
+   - Ajouter une ligne pour ajouter une photo, en supprimer une pour la retirer.
+3. Les 3 premières photos de la liste sont aussi présentées sur l’accueil.
+4. Pour la photo de l’atelier, remplacer `images/atelier.svg` par le nom de la photo dans la section « Atelier » du script.
+5. Relancer `python3 outils/generer-pages.py`.
 
 ## Couleurs et polices
 
 Les couleurs se règlent au début de `css/style.css` (`--paper`, `--leather`, `--gold`, etc.).
-Les polices *Cormorant Garamond* (titres) et *EB Garamond* (texte) sont chargées depuis Google Fonts.
+Les polices *Cormorant Garamond* (titres) et *EB Garamond* (texte) sont **hébergées sur le site**, dans le dossier `fonts/`. Le site ne fait donc aucun appel à Google : c’est plus rapide et plus respectueux des visiteurs (RGPD). Ces polices sont libres (licence SIL OFL), et leurs licences sont jointes dans `fonts/`.
 
 ## Tester sur son ordinateur
 
