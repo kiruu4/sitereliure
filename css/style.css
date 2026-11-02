@@ -29,8 +29,8 @@
   --paper: #F5EEDC;
   --paper-deep: #EBE0C6;
   --paper-card: #FBF7EC;
-  --ink: #3B2A1E;
-  --ink-soft: #5C4636;
+  --ink: #2A1C12;
+  --ink-soft: #45322A;
   --leather: #7A3E1D;
   --leather-dark: #5E2E15;
   --leather-deep: #3F1E0E;
@@ -56,14 +56,15 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0;
   font-family: var(--font-text);
-  font-size: 1.125rem;            /* 18px : confortable sur téléphone */
+  font-size: 1.15rem;             /* ~18,5px : confortable sur téléphone */
+  font-weight: 500;               /* un peu plus appuyé que le « normal » */
   line-height: 1.7;
   color: var(--ink);
   background-color: var(--paper);
   /* Grain de papier léger, sans image externe */
   background-image:
-    radial-gradient(rgba(122, 62, 29, 0.035) 1px, transparent 1px),
-    radial-gradient(rgba(122, 62, 29, 0.025) 1px, transparent 1px);
+    radial-gradient(rgba(122, 62, 29, 0.022) 1px, transparent 1px),
+    radial-gradient(rgba(122, 62, 29, 0.015) 1px, transparent 1px);
   background-size: 7px 7px, 13px 13px;
   background-position: 0 0, 3px 5px;
 }
@@ -80,7 +81,7 @@ a:focus-visible, button:focus-visible {
 
 h1, h2, h3 {
   font-family: var(--font-title);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   color: var(--leather-dark);
   margin: 0 0 0.6em;
@@ -100,9 +101,9 @@ p { margin: 0 0 1em; }
 
 .eyebrow {
   font-family: var(--font-text);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 0.5rem;
@@ -174,12 +175,12 @@ p { margin: 0 0 1em; }
 .brand-mark { width: 2.4rem; height: 2.4rem; color: var(--leather); flex-shrink: 0; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name { font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; }
-.brand-tag { font-size: 0.8rem; color: var(--ink-soft); font-style: italic; }
+.brand-tag { font-size: 0.8rem; font-weight: 600; color: var(--ink-soft); font-style: italic; }
 
 .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; }
 .site-nav a {
   display: block; padding: 0.45rem 0.8rem;
-  font-family: var(--font-text); font-size: 1.02rem; font-weight: 500;
+  font-family: var(--font-text); font-size: 1.05rem; font-weight: 600;
   color: var(--ink); text-decoration: none; border-radius: var(--radius);
 }
 .site-nav a:hover { color: var(--leather); background: rgba(176, 141, 87, 0.15); }
@@ -253,7 +254,7 @@ p { margin: 0 0 1em; }
 }
 .hero h1 { color: #FBF3E2; text-shadow: 0 2px 10px rgba(0,0,0,.35); margin-bottom: 0.4em; }
 .hero .eyebrow { color: var(--gold-light); }
-.hero-lead { font-size: clamp(1.1rem, 2.6vw, 1.3rem); max-width: 40rem; margin: 0 auto; color: #F1E4CC; }
+.hero-lead { font-size: clamp(1.15rem, 2.6vw, 1.3rem); max-width: 40rem; margin: 0 auto; color: #FBF3E2; }
 .hero .button-row { justify-content: center; }
 .br-wide { display: none; }
 @media (min-width: 48rem) { .br-wide { display: inline; } }
@@ -307,7 +308,7 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius);
   padding: 1rem 1.2rem;
 }
-.services dt { font-family: var(--font-title); font-size: 1.2rem; font-weight: 600; color: var(--leather-dark); }
+.services dt { font-family: var(--font-title); font-size: 1.2rem; font-weight: 700; color: var(--leather-dark); }
 .services dd { margin: 0.2rem 0 0; color: var(--ink-soft); }
 
 /* ---------- Étapes ---------- */
@@ -335,11 +336,11 @@ p { margin: 0 0 1em; }
 /* ---------- Appel à l'action ---------- */
 .cta {
   background: var(--green);
-  color: #EDE6D3;
+  color: #F7F1E3;
   background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.08), transparent 70%);
 }
 .cta h2 { color: #F7EEDC; }
-.cta strong { color: var(--gold-light); }
+.cta strong { color: var(--gold-light); font-weight: 700; }
 .cta .button { background: var(--gold-light); border-color: var(--gold-light); color: var(--leather-deep); }
 .cta .button:hover { background: #E8CC93; border-color: #E8CC93; }
 .cta .button-ghost { background: transparent; border-color: rgba(255,255,255,.6); color: #fff; }
@@ -375,10 +376,10 @@ p { margin: 0 0 1em; }
 }
 .gallery-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .4s ease; }
 .gallery-item a:hover img { transform: scale(1.04); }
-.gallery-caption { margin: 0.6rem 0.1rem 0; font-size: 0.98rem; color: var(--ink-soft); line-height: 1.4; }
+.gallery-caption { margin: 0.6rem 0.1rem 0; font-size: 1.02rem; color: var(--ink-soft); line-height: 1.4; }
 .tag {
   display: inline-block; margin-right: 0.3rem; padding: 0 0.5rem;
-  font: 600 0.72rem var(--font-text); letter-spacing: 0.1em; text-transform: uppercase;
+  font: 700 0.75rem var(--font-text); letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--leather); border: 1px solid var(--line); border-radius: 999px; vertical-align: 0.1em;
 }
 
@@ -422,7 +423,7 @@ p { margin: 0 0 1em; }
 }
 .contact-block p, .contact-block address { margin: 0; font-style: normal; }
 .contact-block address + p { margin-top: 0.4rem; }
-.big-link { font-family: var(--font-title); font-size: 1.6rem; font-weight: 600; text-decoration: none; }
+.big-link { font-family: var(--font-title); font-size: 1.6rem; font-weight: 700; text-decoration: none; }
 
 .map iframe {
   display: block; width: 100%; height: 22rem; border: 0;
@@ -430,7 +431,7 @@ p { margin: 0 0 1em; }
   background: var(--paper-deep);
 }
 @media (min-width: 56rem) { .map iframe { height: 30rem; } }
-.map-note { margin-top: 0.5rem; font-size: 0.95rem; color: var(--ink-soft); }
+.map-note { margin-top: 0.5rem; font-size: 1rem; color: var(--ink-soft); }
 
 /* ---------- Texte long ---------- */
 .prose h2 { font-size: 1.5rem; margin-top: 1.75rem; }
@@ -438,12 +439,12 @@ p { margin: 0 0 1em; }
 
 /* ---------- Pied de page ---------- */
 .site-footer {
-  color: #E6D8BC;
+  color: #F1E6D0;
   background: var(--leather-deep);
   background-image: linear-gradient(180deg, #4A2412, var(--leather-deep));
   border-top: 3px solid var(--gold);
   padding: 2.5rem 0 1rem;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 .site-footer a { color: var(--gold-light); }
 .site-footer a:hover { color: #fff; }
@@ -455,7 +456,7 @@ p { margin: 0 0 1em; }
   font-family: var(--font-text); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--gold-light); margin-bottom: 0.3rem;
 }
-.footer-bottom { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(217, 184, 120, 0.25); font-size: 0.9rem; }
+.footer-bottom { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(217, 184, 120, 0.25); font-size: 0.95rem; }
 .footer-bottom p { margin: 0; }
 
 /* ---------- Accessibilité : moins d'animations ---------- */
